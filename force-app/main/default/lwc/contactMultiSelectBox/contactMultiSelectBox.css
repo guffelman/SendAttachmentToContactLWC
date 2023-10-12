@@ -1,0 +1,46 @@
+/* Styles for the input field */
+.slds-form-element .slds-input {
+    width: 100%;
+    height: 2rem;
+}
+
+/* Styles for the dropdown suggestions container */
+.autocomplete {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+/* Styles for the autocomplete results list */
+.autocomplete-results {
+    position: absolute;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #d8dde6;
+    background-color: #fff;
+    z-index: 33;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    margin-top: -14px; /* Adjust the margin-top to bring it closer to the input field */
+}
+
+/* Styles for each suggestion item */
+.autocomplete-results li {
+    padding: 8px;
+    cursor: pointer;
+    border-bottom: 1px solid #d8dde6;
+}
+
+/* Hover effect on suggestion items */
+.autocomplete-results li:hover {
+    background-color: #f4f6f9;
+}
+
+/* Active (clicked) suggestion item */
+.autocomplete-results li.active {
+    background-color: #0050b3;
+    color: #fff;
+}

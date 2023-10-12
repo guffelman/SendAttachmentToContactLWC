@@ -1,0 +1,43 @@
+<template>
+    <!-- Form to select contact based on all contacts in the system, as well as attachments related to a specific record to send in the email -->
+    <lightning-card title="Send Attachment to Contact" icon-name="standard:contact">
+      <div class="slds-m-around_medium">
+        <!-- Select Contact lookup field -->
+        <div class="slds-form-element">
+          <div class="slds-form-element__control">
+            <c-contact-multi-select-box
+    id="contact-dual-listbox"
+    selectedcontacts={selectedContacts}
+    allcontacts={allContacts}
+    oncontactadded={handleContactAdded}
+    oncontactremoved={handleContactRemoved}
+></c-contact-multi-select-box>
+          </div>
+        </div>
+      </div>
+      <div class="slds-m-around_medium">
+        <!-- Select attachment from the record to send -->
+        <lightning-combobox
+          name="selectAttachment"
+          label="Select Attachment"
+          value={selectedAttachment}
+          placeholder="-Select Attachment-"
+          options={attachmentOptions}
+          onchange={handleAttachmentChange}
+        ></lightning-combobox>
+      </div>
+
+    </lightning-card>
+  <br/><br/><br/><br/>
+    <!-- Send email button -->
+    <div class="slds-m-around_medium">
+      <lightning-button
+        variant="brand"
+        label="Send Email"
+        title="Send Email"
+        onclick={handleSendEmail}
+      ></lightning-button>
+    </div>
+
+  </template>
+  

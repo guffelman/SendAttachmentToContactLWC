@@ -1,0 +1,44 @@
+<template>
+  <div class="slds-form-element">
+    <label class="slds-form-element__label">Search for Contacts</label>
+    <input
+      type="text"
+      class="slds-input"
+      placeholder="Search for contacts"
+      value={searchTerm}
+      oninput={handleSearch}
+    />
+  </div>
+  <div class="autocomplete">
+    <ul class="autocomplete-results" if:true={showAutocomplete}>
+      <template for:each={autocompleteResults} for:item="result">
+        <li key={result.Id} data-contact-id={result.Id} onclick={selectContact}>
+          <!-- Use the default Salesforce Contact object icon -->
+          <lightning-icon icon-name="standard:contact" size="x-small" class="slds-m-right_x-small"></lightning-icon>
+          {result.Name}
+        </li>
+      </template>
+    </ul>
+  </div>
+  <template if:true={hasSelectedContacts}>
+    <div class="slds-form-element">
+      <label class="slds-form-element__label">Selected Contacts</label>
+      <div class="slds-form-element__control">
+        <ul class="slds-listbox slds-listbox_horizontal">
+          <template for:each={selectedContacts} for:item="contact">
+            <li key={contact.Id} class="slds-listbox__item">
+              <span class="slds-pill" role="button" tabindex="0">
+                <!-- Use the default Salesforce Contact object icon -->
+                <lightning-icon icon-name="standard:contact" size="x-small" class="slds-m-right_x-small"></lightning-icon>
+                <span class="slds-pill__label">{contact.Name}</span>
+                <button class="slds-button slds-button_icon slds-button_icon slds-pill__remove" title="Remove" onclick={removeContact} data-contact-id={contact.Id}>
+                  <lightning-icon icon-name="utility:close" size="x-small"></lightning-icon>
+                </button>
+              </span>
+            </li>
+          </template>
+        </ul>
+      </div>
+    </div>
+  </template>
+</template>
